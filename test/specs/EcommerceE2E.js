@@ -10,42 +10,32 @@ describe("Ecommerce Application", () => {
     await password.setValue('learning');
     await loginBtn.click();
 
-    await browser.pause(2000);
-    var cards = await $$(".card.h-100 div[class='card-body'] h4 a");
-    //const ele1=await $('div h4 a');
-    var ele2 = await $(".card-footer button");
-    const add_btn = await $('.btn.btn-info');
-
-    //var check = $('.nav-link.btn.btn-primary');
-    const items = ["Blackberry", "Samsung Note 8", "iphone X"];
-
-    for (let card of cards) {
-      for (let item of items) {
-        if (await card.getText() === item) {
-
-          // await ele2.click();
-          await add_btn.click();
-        }
+    
+    const productsList = ["Blackberry", "Samsung Note 8", "iphone X"];
+    const cards = await $$("div[class='card h-100']");
+    console.log("lenght of cards"+(await cards).length);
+    for(let i=0;i<(await cards).length;i++)
+    {
+      console.log("inside for block");
+      const productName=await cards[i].$("div h4 a").getText();
+      if(productsList.includes(productName))
+      {
+        console.log("inside if block");
+       await cards[i].$('.card-footer button').click();
       }
+
+
+
     }
-
+    console.log("text: " + await checkOut.getText());
     await checkOut.click();
+    await browser.saveScreenshot("checkout1.png")
+  
 
-    // const Total_ele=await $$('tbody tr td:nth-child(4) strong');
-    // for(let ele of Total_ele)
-    // {
-    // var value=await ele.getText();
-    // console.log(value);
+    
 
+  
 
-    // }
-
-
-
-    //  cards.filter(async(card)=>await card.getText()==="Blackberry"
-    // ).map(async(add)=>await (await add.ele2).click());
-    await browser.pause(2000);
-    console.log("checkout value" + await checkOut.getText());
 
 
 
