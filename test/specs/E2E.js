@@ -12,8 +12,8 @@ describe("Ecommerce Application", () => {
     await password.setValue('learning');
     await loginBtn.click();
 
-    // const homepage = $("a.navbar-brand")
-    // await expect(homepage).toBeDisplayed()
+     const homepage = $("a.navbar-brand")
+     await expect(homepage).toBeDisplayed()
 
     const productsList = ["Blackberry", "Samsung Note 8", "iphone X"];
     const cards = $$("div[class='card h-100']");

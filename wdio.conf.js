@@ -21,7 +21,7 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/EcommerceE2E.js'
+        './test/specs/**/GreenKart.js'
     ],
     // Patterns to exclude. 
     exclude: [
