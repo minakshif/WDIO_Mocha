@@ -9,9 +9,11 @@ describe("Ecommerce Application", () => {
     await username.setValue('rahulshettyacademy');
     await password.setValue('learning');
     await loginBtn.click();
+    const homepage = $("a.navbar-brand")
+    await expect(homepage).toBeDisplayed()
 
     
-    const productsList = ["Blackberry", "Samsung Note 8", "iphone X"];
+    const productsList = ["Blackberry", "Samsung Note 8"];
     const cards = await $$("div[class='card h-100']");
     console.log("lenght of cards"+(await cards).length);
     for(let i=0;i<(await cards).length;i++)
@@ -22,6 +24,7 @@ describe("Ecommerce Application", () => {
       {
         console.log("inside if block");
        await cards[i].$('.card-footer button').click();
+
       }
 
 
